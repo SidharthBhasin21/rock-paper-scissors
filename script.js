@@ -102,10 +102,7 @@ const win = (userChoice,compChoice) =>{
     pcWinner.classList.add(`${compChoice}`)
 
     console.log(userScore, computerScore)
-    if(userScore.innerText > computerScore.innerText){
-        nextBtn.classList.remove('hide')
-    }
-
+    nextBtn.classList.remove('hide')
 }
 
 
