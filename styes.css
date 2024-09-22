@@ -299,10 +299,10 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     text-transform: uppercase;
+    gap: 20px;
 }
 
 .hide {
@@ -334,6 +334,7 @@ body {
 }
 
 #trophy { 
+    margin-top: -140px;
     animation: pulse-celebration 0.5s infinite ease-in-out;
 }
 
