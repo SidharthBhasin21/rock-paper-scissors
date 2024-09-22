@@ -16,18 +16,21 @@ let rulesContainer = document.getElementsByClassName('rules-container')[0];
 let resultContainer = document.getElementsByClassName('result-container')[0];
 
 
-let userWinner = document.querySelector(".result-container .tile")
-console.log(userWinner)
+let userWinner = document.querySelector("#user-res")
+let pcWinner = document.querySelector("#comp-res")
+
+let nextBtn = document.getElementById('next')
 
 
 document.getElementById('rules').addEventListener('click', function() {
     rulesContainer.style.opacity = 1;
     rulesContainer.style.pointerEvents = 'all';
+    rulesContainer.style.display = 'block';
 })
 document.getElementById('close').addEventListener('click', function() {
-    
-    rulesContainer.style.pointerEvents = 'none';
-    rulesContainer.style.opacity = 0;
+    console.log(rulesContainer)
+    rulesContainer.style.display = 'none';
+
 })
 
 /********* GAME START **************/
@@ -104,9 +107,9 @@ const win = (userChoice,compChoice) =>{
     localStorage.setItem('userScore', parseInt(userScore.innerText) + 1)
     userScore.innerText =  parseInt(userScore.innerText) + 1
     userWinner.classList.add('pulse')
-    
-    if(userScore > computerScore){
-        
+    console.log(userScore, computerScore)
+    if(userScore.innerText > computerScore.innerText){
+        nextBtn.classList.remove('hide')
     }
 
 }
@@ -125,6 +128,7 @@ const lose = (userChoice,compChoice) =>{
     
     localStorage.setItem('computerScore', parseInt(computerScore.innerText) + 1)
     computerScore.innerText =  parseInt(computerScore.innerText) + 1
+    pcWinner.classList.add('pulse')
     
 }
 const tie = (userChoice,compChoice) =>{
@@ -144,4 +148,14 @@ document.getElementById('play-again').addEventListener('click', function() {
     resultContainer.classList.add('hide');
     userChoice = '';
     userWinner.classList.remove('pulse')
+})
+
+
+nextBtn.addEventListener('click', function(){
+    document.getElementsByClassName('score-banner')[0].classList.add('hide')
+    document.getElementsByClassName('result-parent')[0].classList.add('hide')
+    nextBtn.classList.add('hide')
+    rulesContainer.classList.add('hide')
+    tilesContainer.classList.add('hide')
+    console.log('next')
 })

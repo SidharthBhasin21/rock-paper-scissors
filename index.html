@@ -26,11 +26,15 @@
 
     <!-- Rules Button -->
 
-    <button class="rules-btn" id="rules">Rules</button>
+    <div class="btn-container">
+        <button class="btn" id="rules">Rules</button>
+        <button class="btn " id="next">Next</button>
+
+    </div>     
 
     <!-- Rules modal -->
 
-    <div class="rules-container">
+    <div class="rules-container hide">
         <h2>Game Rules</h2>
         <ul>
             <li>Rock beats scissors, scissors beat paper, and paper beats rock.</li>
@@ -66,7 +70,7 @@
     <!-- Result -->
     <div class="result-parent ">
         <div class="result-container hide">
-            <div class="tile paper ">
+            <div class="tile paper" id="user-res">
                 <img src="" alt="paper" id="user-selected-img">
 
             </div>
@@ -75,7 +79,8 @@
                 <p>AGAINST PC</p>
                 <button class="play-again" id="play-again">Play Again</button>
             </div>
-            <div class="tile scissors">
+            <div class="tile scissors" id="comp-res">
+                
                 <img src="" alt="scissors" id="pc-selected-img">
             </div>
 
@@ -84,14 +89,19 @@
 
     </div>
 
-
+    <!-- Final -->
     <div class="final-container">
 
         <div class="final-result">
-            <h2>Hurray</h2>
-            <p id="final-result">You Win</p>
+            <div class="prize-container">
+                <img src="./assets/images/stars.png" alt="" id="stars">
+                <img src="./assets/images/prize.png" alt="" id="trophy">
+            </div>
+            <h2>Hurray !!</h2>
+            <p id="final-result">YOU WON THE GAME</p>
             <button class="play-again" id="play-again">Play Again</button>
         </div>
+        
     </div>
 
     <script src="script.js"></script>
