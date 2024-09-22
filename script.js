@@ -129,6 +129,9 @@ const lose = (userChoice,compChoice) =>{
     localStorage.setItem('computerScore', parseInt(computerScore.innerText) + 1)
     computerScore.innerText =  parseInt(computerScore.innerText) + 1
     pcWinner.classList.add('pulse')
+    if(userScore.innerText > computerScore.innerText){
+        nextBtn.classList.remove('hide')
+    }
     
 }
 const tie = (userChoice,compChoice) =>{
@@ -140,7 +143,9 @@ const tie = (userChoice,compChoice) =>{
 
     userSelectedImg.src = `/assets/images/${userChoice}.png`
     pcSelectedImg.src = `/assets/images/${compChoice}.png`
-    console.log(x,y ,"tie")
+    if(userScore.innerText > computerScore.innerText){
+        nextBtn.classList.remove('hide')
+    }
 
 }
 document.getElementById('play-again').addEventListener('click', function() {
@@ -158,4 +163,18 @@ nextBtn.addEventListener('click', function(){
     rulesContainer.classList.add('hide')
     tilesContainer.classList.add('hide')
     console.log('next')
+})
+
+
+document.getElementById('again').addEventListener('click', function() {
+    tilesContainer.classList.remove('hide');
+    resultContainer.classList.add('hide');
+    userChoice = '';
+    userWinner.classList.remove('pulse')
+    pcWinner.classList.remove('pulse')
+    document.getElementsByClassName('score-banner')[0].classList.remove('hide')
+    document.getElementsByClassName('result-parent')[0].classList.remove('hide')
+    userScore.innerText = localStorage.getItem('userScore') || 0;
+    computerScore.innerText = localStorage.getItem('computerScore') || 0;
+    console.log('play again')
 })
