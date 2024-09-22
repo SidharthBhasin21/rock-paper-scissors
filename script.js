@@ -13,7 +13,7 @@ let scissors = document.getElementById('scissors');
 let tilesContainer = document.getElementsByClassName('tiles-container')[0];
 let rulesContainer = document.getElementsByClassName('rules-container')[0];
 
-let resultContainer = document.getElementsByClassName('result-container')[0];
+let resultContainer = document.getElementsByClassName('result-parent')[0];
 
 
 let userWinner = document.querySelector("#user-res")
@@ -56,21 +56,11 @@ scissors.addEventListener('click', function() {
     playGame(compChoice);
 });
 
-
-
-
-
-
-
-
-
-
-
-
 const playGame = (compChoice) => {
     let user = userChoice;
     let computer = compChoice;
-
+    userWinner.classList.remove(`${user}`)
+    pcWinner.classList.remove(`${computer}`)
 
     switch(user + computer) {
         case 'rockscissors':
@@ -90,6 +80,7 @@ const playGame = (compChoice) => {
             break;
     }
 }
+
 const computerChoice = () => {
     let choices = ['rock', 'paper', 'scissors'];
     let randomNumber = Math.floor(Math.random() * 3);
@@ -106,7 +97,10 @@ const win = (userChoice,compChoice) =>{
     
     localStorage.setItem('userScore', parseInt(userScore.innerText) + 1)
     userScore.innerText =  parseInt(userScore.innerText) + 1
+    userWinner.classList.add(`${userChoice}`)
     userWinner.classList.add('pulse')
+    pcWinner.classList.add(`${compChoice}`)
+
     console.log(userScore, computerScore)
     if(userScore.innerText > computerScore.innerText){
         nextBtn.classList.remove('hide')
@@ -128,10 +122,11 @@ const lose = (userChoice,compChoice) =>{
     
     localStorage.setItem('computerScore', parseInt(computerScore.innerText) + 1)
     computerScore.innerText =  parseInt(computerScore.innerText) + 1
+    userWinner.classList.add(`${userChoice}`)
+    pcWinner.classList.add(`${compChoice}`)
+    
     pcWinner.classList.add('pulse')
-    if(userScore.innerText > computerScore.innerText){
-        nextBtn.classList.remove('hide')
-    }
+
     
 }
 const tie = (userChoice,compChoice) =>{
@@ -143,14 +138,22 @@ const tie = (userChoice,compChoice) =>{
 
     userSelectedImg.src = `/assets/images/${userChoice}.png`
     pcSelectedImg.src = `/assets/images/${compChoice}.png`
-    if(userScore.innerText > computerScore.innerText){
-        nextBtn.classList.remove('hide')
-    }
+    
+    userWinner.classList.add(`${userChoice}`)
+    pcWinner.classList.add(`${compChoice}`)
 
 }
 document.getElementById('play-again').addEventListener('click', function() {
     tilesContainer.classList.remove('hide');
     resultContainer.classList.add('hide');
+    document.getElementsByClassName('final-container')[0].style.display = 'none'
+    
+    userWinner.className = ""
+    pcWinner.className = ""
+
+    userWinner.classList.add('tile')
+    pcWinner.classList.add('tile')
+    nextBtn.classList.add('hide')
     userChoice = '';
     userWinner.classList.remove('pulse')
 })
@@ -159,6 +162,8 @@ document.getElementById('play-again').addEventListener('click', function() {
 nextBtn.addEventListener('click', function(){
     document.getElementsByClassName('score-banner')[0].classList.add('hide')
     document.getElementsByClassName('result-parent')[0].classList.add('hide')
+    document.getElementsByClassName('final-container')[0].style.display = 'block'
+    
     nextBtn.classList.add('hide')
     rulesContainer.classList.add('hide')
     tilesContainer.classList.add('hide')
@@ -173,7 +178,9 @@ document.getElementById('again').addEventListener('click', function() {
     userWinner.classList.remove('pulse')
     pcWinner.classList.remove('pulse')
     document.getElementsByClassName('score-banner')[0].classList.remove('hide')
-    document.getElementsByClassName('result-parent')[0].classList.remove('hide')
+    document.getElementsByClassName('result-parent')[0].classList.add('hide')
+    document.getElementsByClassName('final-container')[0].style.display = 'none'
+
     userScore.innerText = localStorage.getItem('userScore') || 0;
     computerScore.innerText = localStorage.getItem('computerScore') || 0;
     console.log('play again')

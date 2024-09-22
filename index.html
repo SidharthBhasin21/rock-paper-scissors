@@ -30,7 +30,7 @@
         <button class="btn" id="rules">Rules</button>
         <button class="btn hide" id="next">Next</button>
 
-    </div>     
+    </div>
 
     <!-- Rules modal -->
 
@@ -68,10 +68,14 @@
     </div>
 
     <!-- Result -->
-    <div class="result-parent ">
-        <div class="result-container hide">
-            <div class="tile paper" id="user-res">
-                <img src="" alt="paper" id="user-selected-img">
+    <div class="result-parent hide">
+        <div class="result-container">
+            <div class="tile-parent">
+
+                <p>YOU PICKED</p>
+                <div class="tile" id="user-res">
+                    <img src="" alt="paper" id="user-selected-img">
+                </div>
 
             </div>
             <div class="game-status">
@@ -79,9 +83,14 @@
                 <p>AGAINST PC</p>
                 <button class="play-again" id="play-again">Play Again</button>
             </div>
-            <div class="tile scissors" id="comp-res">
-                
-                <img src="" alt="scissors" id="pc-selected-img">
+
+            <div class="tile-parent">
+
+                <p>PC PICKED</p>
+                <div class="tile" id="comp-res">
+
+                    <img src="" alt="scissors" id="pc-selected-img">
+                </div>
             </div>
 
 
@@ -90,9 +99,9 @@
     </div>
 
     <!-- Final -->
-    <div class="final-container">
+    <div class="final-container ">
 
-        <div class="final-result">
+        <div class="final-result ">
             <div class="prize-container">
                 <img src="./assets/images/stars.png" alt="" id="stars">
                 <img src="./assets/images/prize.png" alt="" id="trophy">
@@ -101,7 +110,7 @@
             <p id="final-result">YOU WON THE GAME</p>
             <button class="play-again" id="again">Play Again</button>
         </div>
-        
+
     </div>
 
     <script src="script.js"></script>
